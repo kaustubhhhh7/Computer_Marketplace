@@ -1,154 +1,274 @@
-.blogs-container {
-  padding: 20px;
-  font-family: "Poppins", sans-serif;
-  background: #f0f4f8;
-  color: #333;
-  transition: all 0.3s ease;
+/* Premium Guide Page Styles */
+
+.guide-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1d2e 50%, #0f1419 100%);
+  padding-top: 80px;
+  position: relative;
 }
 
-.blogs-container.dark {
-  background: #1e1e1e;
-  color: #f0f4f8;
+.guide-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(77, 163, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(94, 200, 242, 0.04) 0%, transparent 50%);
+  pointer-events: none;
 }
 
-.blogs-container.high-contrast {
-  background: #000;
-  color: #ffd700;
+.guide-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 80px;
+  position: relative;
 }
 
-/* Add more styles... */
-
-
-.dark-mode {
-  background: #1e1e1e;
-  color: #f0f4f8;
+/* Left Hero Column - Sticky */
+.guide-hero {
+  position: sticky;
+  top: 120px;
+  height: fit-content;
 }
 
-.dark-mode .blog-card {
-  border-color: #333;
+.guide-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-primary);
+  margin-bottom: 16px;
+  font-weight: 600;
 }
 
-.controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+.guide-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 16px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
-.search-and-filters input,
-.search-and-filters select {
-  padding: 10px;
+.guide-subtitle {
   font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  transition: all 0.3s ease;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 48px;
 }
 
-.search-and-filters input:focus,
-.search-and-filters select:focus {
-  border-color: #007bff;
+/* Progress Indicator */
+.progress-indicator {
+  position: relative;
+  padding-left: 24px;
 }
 
-.blog-list {
+.progress-line {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-primary) 0%, rgba(77, 163, 255, 0.2) 100%);
+  border-radius: 2px;
+}
+
+.progress-steps {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.blog-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  width: 30%;
+.progress-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--surface-color);
+  border: 2px solid var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   transition: all 0.3s ease;
-  background: #fff;
 }
 
-.blog-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+.progress-dot span {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent-primary);
 }
 
-.blog-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
+/* Right Steps Column */
+.guide-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.blog-info {
-  padding: 10px;
+/* Step Card */
+.step-card {
+  position: relative;
+  background: rgba(22, 26, 32, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(30px);
 }
 
-.blog-info h3 {
+.step-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(77, 163, 255, 0.3);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(77, 163, 255, 0.1);
+}
+
+.step-card:hover .step-accent {
+  opacity: 1;
+  height: 100%;
+}
+
+/* Left Accent Line */
+.step-accent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 0%;
+  background: linear-gradient(180deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  border-radius: 0 4px 4px 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+/* Step Header */
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.step-badge {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(77, 163, 255, 0.3);
+}
+
+.step-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}
+
+.step-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-main);
   margin: 0;
-  font-size: 18px;
+  letter-spacing: -0.01em;
 }
 
-.blog-info span {
-  color: gray;
-  font-size: 14px;
+.step-description {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
 }
 
-.blog-detail {
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 20px;
-  background: #fff;
-}
-
-.back-button {
-  padding: 10px 20px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.back-button:hover {
-  background: #0056b3;
-}
-
-.tags {
-  margin-top: 10px;
-}
-
-.tag {
-  background: #007bff;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  margin-right: 5px;
-}
-
-.videos-section {
-  margin-top: 40px;
-}
-
-.video-list {
+/* Tip Section */
+.step-tip {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(77, 163, 255, 0.05);
+  border-left: 3px solid var(--accent-primary);
+  border-radius: 8px;
 }
 
-.video-card {
-  width: 30%;
+.tip-icon {
+  flex-shrink: 0;
+  color: var(--accent-primary);
+  margin-top: 2px;
 }
 
-.video-card iframe {
-  width: 100%;
-  height: 200px;
-  border-radius: 10px;
+.step-extra {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
 }
 
-.dark-mode .back-button {
-  background: #f0f4f8;
-  color: #333;
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .guide-content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 60px 24px;
+  }
+
+  .guide-hero {
+    position: relative;
+    top: 0;
+  }
+
+  .progress-indicator {
+    display: none;
+  }
+
+  .guide-title {
+    font-size: 36px;
+  }
 }
 
-.dark-mode .tag {
-  background: #333;
+@media (max-width: 768px) {
+  .guide-title {
+    font-size: 32px;
+  }
+
+  .step-card {
+    padding: 24px;
+  }
+
+  .step-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .step-title {
+    font-size: 20px;
+  }
+
+  .step-description {
+    font-size: 15px;
+  }
+}
+
+/* Scroll animations */
+@media (prefers-reduced-motion: no-preference) {
+  .step-card {
+    transition-delay: calc(var(--index) * 0.1s);
+  }
 }
