@@ -1,66 +1,143 @@
-/* font family GLOBAL Declarations */
-@font-face {
-    font-family: 'Poppins-Bold';
-    src: url('../fonts/Poppins-Bold.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  @font-face { /* Global All titles*/
-    font-family: 'Poppins-Medium'; 
-    src: url('../fonts/Poppins-Medium.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-  @font-face {  /* Home 1 Usertype */
-    font-family: 'RobotoMono-Bold';
-    src: url('../fonts/Poppins-ExtraBold.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+:root {
+  /* Premium Dark Palette */
+  --bg-color: #0E0F12;
+  --bg-secondary: #121418;
+  --surface-color: #161A20;
+  --surface-hover: #1F242C;
 
-  @font-face {       /* only for ayush logo */
-    font-family: 'Cust-Atmospheric';
-    src: url('../fonts/aAtmospheric.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+  /* Accents */
+  --accent-primary: #4DA3FF;
+  /* Muted Electric Blue */
+  --accent-secondary: #5EC8F2;
+  /* Cyan */
+  --accent-glow: rgba(77, 163, 255, 0.4);
 
-  @font-face {       /* only for FAQs */
-    font-family: 'SourceSansPro';
-    src: url('../fonts/aAtmospheric.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+  /* Text */
+  --text-main: #ECECEC;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
 
-*{
- font-family: 'Poppins-Medium';
-  }
+  /* Borders */
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.15);
 
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+  /* Shadows */
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(77, 163, 255, 0.15);
 
-/* Custom slim scrollbar for the whole app (visible, styled) */
-html, body {
-  /* Hide global scrollbar but keep scrolling enabled */
-  scrollbar-width: none;                     /* Firefox */
-  -ms-overflow-style: none;                  /* IE/Edge */
+  /* Navbar */
+  --glass-bg: rgba(22, 26, 32, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-blur: 16px;
+
+  /* Typography */
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  display: none;                             /* Chrome/Safari */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Hide scrollbar but allow scrolling for blogs steps column */
-.steps-scroll {
-  scrollbar-width: none;                     /* Firefox */
-  -ms-overflow-style: none;                  /* IE/Edge */
+html,
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  scroll-behavior: smooth;
 }
 
-.steps-scroll::-webkit-scrollbar {
-  display: none;                             /* Chrome/Safari */
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-  
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2F38;
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3B414C;
+}
+
+/* Global Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+button {
+  font-family: var(--font-main);
+  cursor: pointer;
+}
+
+/* Glassmorphism Utility */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+.max-w-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
